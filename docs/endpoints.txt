@@ -1,0 +1,135 @@
+DOCUMENTACIÓN DE LA API DE RESERVAS DE RESTAURANTE
+
+=== CLIENTES ===
+
+1. Crear Cliente
+Método: POST
+URL: /clientes
+Body:
+{
+    "nombre": "Carlos Gómez",
+    "correo": "carlos@example.com",
+    "telefono": "123456789"
+}
+
+2. Obtener todos los Clientes
+Método: GET
+URL: /clientes
+
+3. Obtener Cliente por ID
+Método: GET
+URL: /clientes/:id
+Ejemplo: /clientes/64f5a2b3c4d5e6f7g8h9i0j1
+
+4. Actualizar Cliente
+Método: PUT
+URL: /clientes/:id
+Body:
+{
+    "nombre": "Carlos Gómez Actualizado",
+    "correo": "carlos.nuevo@example.com",
+    "telefono": "987654321"
+}
+
+5. Eliminar Cliente
+Método: DELETE
+URL: /clientes/:id
+
+=== MESAS ===
+
+1. Crear Mesa
+Método: POST
+URL: /mesas
+Body:
+{
+    "numero": 5,
+    "capacidad": 4,
+    "ubicacion": "Ventana"
+}
+
+2. Obtener todas las Mesas
+Método: GET
+URL: /mesas
+
+3. Obtener Mesa por ID
+Método: GET
+URL: /mesas/:id
+Ejemplo: /mesas/64f5a2b3c4d5e6f7g8h9i0j1
+
+4. Actualizar Mesa
+Método: PUT
+URL: /mesas/:id
+Body:
+{
+    "numero": 6,
+    "capacidad": 6,
+    "ubicacion": "Terraza"
+}
+
+5. Eliminar Mesa
+Método: DELETE
+URL: /mesas/:id
+
+=== RESERVAS ===
+
+1. Crear Reserva
+Método: POST
+URL: /reservas
+Body:
+{
+    "clienteId": "64f5a2b3c4d5e6f7g8h9i0j1",
+    "mesaId": "64f5a2b3c4d5e6f7g8h9i0j2",
+    "fecha": "2024-03-25T19:00:00Z",
+    "personas": 3
+}
+
+2. Obtener todas las Reservas
+Método: GET
+URL: /reservas
+
+3. Obtener Reserva por ID
+Método: GET
+URL: /reservas/:id
+Ejemplo: /reservas/64f5a2b3c4d5e6f7g8h9i0j1
+
+4. Actualizar Reserva
+Método: PUT
+URL: /reservas/:id
+Body:
+{
+    "fecha": "2024-03-26T20:00:00Z",
+    "personas": 4
+}
+
+5. Eliminar Reserva
+Método: DELETE
+URL: /reservas/:id
+
+=== CONSULTAS ESPECIALES ===
+
+1. Obtener Reservas por Cliente
+Método: GET
+URL: /reservas/cliente/:clienteId
+
+2. Obtener Reservas por Mesa
+Método: GET
+URL: /reservas/mesa/:mesaId
+
+3. Verificar Disponibilidad de Mesa
+Método: GET
+URL: /mesas/disponibilidad
+Query Params: ?fecha=2024-03-25T19:00:00Z
+
+Notas:
+- Todas las fechas deben enviarse en formato ISO 8601
+- Los IDs son generados automáticamente por MongoDB
+- Las respuestas incluirán los datos relacionados (población)
+- Todos los endpoints retornan JSON
+- En caso de error, se retornará un objeto con la propiedad "error"
+
+Códigos de Estado:
+200: Éxito
+201: Creado exitosamente
+400: Error en la solicitud
+404: No encontrado
+500: Error del servidor 
