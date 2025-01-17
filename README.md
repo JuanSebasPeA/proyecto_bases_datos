@@ -9,7 +9,6 @@ Sistema de gestión de reservas para restaurantes desarrollado con Node.js y Mon
 - Sistema de reservaciones
 - Verificación de disponibilidad
 - API RESTful
-- Validaciones automáticas
 - Relaciones entre entidades
 
 ## 🛠️ Tecnologías
